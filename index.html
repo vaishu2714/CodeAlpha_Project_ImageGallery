@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+
+        .gallery img:hover {
+            
+            border-color: #333;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   <u><h1> Image Gallery</h1></u> 
+    <div class="gallery">
+        <img src="/bhcs.png" alt="Image 1" onclick="openLightbox(this)">
+        <img src="/fnd.png" alt="Image 2" onclick="openLightbox(this)">
+        <img src="/font.png" alt="Image 3" onclick="openLightbox(this)">
+        <img src="/hcs.png" alt="Image 4" onclick="openLightbox(this)">
+        <img src="/phcs.png" alt="Image 5" onclick="openLightbox(this)">
+        <img src="/whcs.png" alt="Image 6" onclick="openLightbox(this)">
+        <img src="/f1.png" alt="Image 7" onclick="openLightbox(this)">
+        <img src="/f2.png" alt="Image 8" onclick="openLightbox(this)">
+    </div>
+
+    <div class="lightbox" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img src="" alt="Lightbox Image">
+    </div>
+
+    <script>
+        function openLightbox(image) {
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            lightboxImg.src = image.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.querySelector('.lightbox');
+            lightbox.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
